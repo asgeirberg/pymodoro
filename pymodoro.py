@@ -18,17 +18,21 @@ def print_minutes(seconds):
     m, s = divmod(seconds, 60)
     h, m = divmod(m, 60)
 
+    print "\r",
+
     if print_seconds:
         if h > 0:
-            print "%d:%02d:%02d" % (h, m, s)
+            print " %d:%02d:%02d" % (h, m, s),
         else:
-            print "%02d:%02d" % (m, s)
+            print " %02d:%02d" % (m, s),
     else:
         if seconds % 60 == 0:
             if h > 0:
-                print "%d:%02d:%02d" % (h, m, s)
+                print " %d:%02d:%02d\r" % (h, m, s),
             else:
-                print "%02d:%02d" % (m, s)
+                print " %02d:%02d\r" % (m, s),
+
+    sys.stdout.flush()
 
 def countdown(count, quiet):
     while (count >= 0):
